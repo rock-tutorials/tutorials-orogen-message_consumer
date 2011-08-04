@@ -2,16 +2,14 @@ require 'orocos'
 require 'readline'
 
 include Orocos
+Nameservice::enable(:AVAHI, :searchdomains => [ '_robot._tcp'])
 Orocos.initialize
 
 
-Orocos.run 'message_producer_deployment', 'message_consumer_deployment' do 
+Orocos.run 'message_consumer_deployment', :cmdline_args => { 'sd-domain' => '_robot._tcp'}, :wait => 3 do 
 
      message_producer = TaskContext.get 'message_producer'
      message_consumer = TaskContext.get 'message_consumer'
-
-     message_producer.configure
-     message_producer.start
 
      message_consumer.start
 
