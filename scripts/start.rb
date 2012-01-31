@@ -5,7 +5,7 @@ include Orocos
 Orocos.initialize
 
 
-Orocos.run 'message_producer_deployment', 'message_consumer_deployment' do 
+Orocos.run 'message_consumer::Task' => 'message_consumer', 'message_producer::Task' => 'message_producer' do 
 
      message_producer = TaskContext.get 'message_producer'
      message_consumer = TaskContext.get 'message_consumer'

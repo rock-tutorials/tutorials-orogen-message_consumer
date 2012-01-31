@@ -25,10 +25,3 @@ task_context "Task" do
    # port gets data, uncomment this
    port_driven "messages"
 end
-
-
-# Declares a deployment, i.e. an actual executable that contains various tasks.
-deployment "message_consumer_deployment" do
-    task("message_consumer", "Task")
-end
-
